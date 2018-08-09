@@ -1,6 +1,6 @@
 
 @extends('layouts.admin')
-
+@section('title', 'Admin | Create Employee')
 @section('content')
 
 <div class="content-wrapper">
@@ -11,9 +11,8 @@
         <small>Preview</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">General Elements</li>
+        <li><a href="{{ url('/admin/user') }}"><i class="fa fa-table"></i> Employee</a></li>
+        <li class="active">Create Employee</li>
       </ol>
     </section>
 
@@ -38,38 +37,40 @@
            
               <div class="box-body">
                 <div class="form-group">
-                  <label for="name" class="col-sm-2 control-label">Name</label>
+                  <label for="name" class="col-sm-2 control-label" style="margin:10px">Name</label>
 
-                  <div class="col-sm-8">
+                  <div class="col-sm-9 " style="margin:10px">
                     <input type="text" class="form-control" id="name" name="name" placeholder="Name">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="email" class="col-sm-2 control-label">Email</label>
 
-                  <div class="col-sm-8">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                  <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label" style="margin:10px">Email</label>
+
+                    <div class="col-sm-9" style="margin:10px">
+                      <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="address" class="col-sm-2 control-label" style="margin:10px">Address</label>
+
+                    <div class="col-sm-9" style="margin:10px">
+                      <textarea placeholder="Address" class="form-control" id="address" name="address" type="text" ></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="telepon" class="col-sm-2 control-label" style="margin:10px">Telepon</label>
+
+                    <div class="col-sm-9" style="margin:10px">
+                      <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Telepoon">
+                    </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="address" class="col-sm-2 control-label">Address</label>
-
-                  <div class="col-sm-8">
-                    <textarea placeholder="Address" class="form-control" id="address" name="address" type="text"></textarea>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="telepon" class="col-sm-2 control-label">Telepon</label>
-
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Telepoon">
-                  </div>
-                </div>
-                
-              </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-default">Cancel</button>
+                <button type="reset" class="btn btn-default">Cancel</button>
                 <button type="submit" class="btn btn-info pull-right">Add Data</button>
               </div>
               <!-- /.box-footer -->

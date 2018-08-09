@@ -38,9 +38,9 @@ class UserController extends Controller
               'name' => $data['name'],
               'email' => $data['email'],
               'password' => bcrypt($data['password']),
-              
+
           ]);
-          
+
             return $user;
     }
 
@@ -52,12 +52,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         // $this->validate($request, [
         //     'name' => 'required',
         //     'email' => 'required',
         //     'password' => 'required|min:6',
-            
+
 
         //     ]);
 
@@ -74,16 +74,16 @@ class UserController extends Controller
         // return redirect('admin/user'); // Set redirect ketika berhasil
 
         $user = array(
-            
-            
+
+
             'name'       => 'required',
             'email'      => 'required|email|unique:users',
             'password'   => 'required|min:6',
         );
-       
+
 
             $user = new User;
-            
+
             $user->password = Hash::make(Input::get('password'));
             $user->name = Input::get('name');
             $user->email = Input::get('email');
@@ -91,7 +91,7 @@ class UserController extends Controller
             // redirect
             Session::flash('message', 'Successfully created user!');
             return redirect('admin/user');
-            
+
     }
 
     /**
@@ -104,6 +104,16 @@ class UserController extends Controller
     {
         //
     }
+    public function sendEmailReminder(Request $request, $id)
+      {
+          $user = User::findOrFail($id);
+
+          Mail::send('admin.mail.backup', ['user' => $user], function ($m) use ($user) {
+              $m->from('titihanifah25@gmail.com', 'Your Application');
+
+              $m->to($user->email, $user->name)->subject('Your Reminder!');
+          });
+      }
 
     /**
      * Show the form for editing the specified resource.
@@ -128,20 +138,14 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
-         $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required',
-            'point' => 'required',
-            'role' => 'required'
-        ]);
-
-        $user = User::find($id);
+         //
+        $user= User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->password = $request->password;
         $user->save();
-
-        Session::flash('message', 'Berhasil mengedit Data User!');
-        return redirect('admin.user'); // Set redirect ketika berhasil
+        Session::flash('message', 'Berhasil mengedit data user!');
+        return redirect('admin/user'); // Set redirect ketika berhasil
     }
 
     /**
@@ -156,6 +160,8 @@ class UserController extends Controller
          User::destroy($id);
        // Beri message kalau berhasil
        Session::flash('message', 'Berhasil menghapus user!');
-       return redirect('admin.user'); // Set redirect ketika berhasil
+       return redirect('admin/user'); // Set redirect ketika berhasil
+
+
     }
 }

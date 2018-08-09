@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-
+@section('title','Admin | Dashboard')
 @section('content')
 <!-- <div class="container">
     <div class="row">
@@ -14,6 +14,7 @@
         </div>
     </div>
 </div> -->
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">

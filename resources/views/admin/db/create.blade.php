@@ -28,11 +28,11 @@
         <div class="col-md-10">
           <!-- Horizontal Form -->
           <div class="box box-info">
-            {!! Form::open(array('route' => 'user.store', 'enctype' => 'multipart/form-data')) !!}
+            {!! Form::open(array('route' => 'db.store', 'enctype' => 'multipart/form-data')) !!}
             
             <div class="box-header with-border">
               
-              <h3 class="box-title">Add User</h3>
+              <h3 class="box-title">Add DB</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

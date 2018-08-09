@@ -1,5 +1,6 @@
 
 @extends('layouts.admin')
+@section('title', 'Admin | Data Employee')
 
 @section('content')
 

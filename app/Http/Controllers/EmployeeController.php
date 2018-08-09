@@ -59,7 +59,7 @@ class EmployeeController extends Controller
         //save object to database
         $employee->save();
         //message success
-        Session::flash('message', 'Berhasil menambahkan type tempat sampah!');
+        Session::flash('message', 'Success add data employee!');
         return redirect('admin/employee'); // Set redirect ketika berhasil
 
     }
@@ -98,6 +98,15 @@ class EmployeeController extends Controller
     public function update(Request $request, $id)
     {
         //
+        //
+        $employee= Employee::find($id);
+        $employee->name = $request->name;
+        $employee->email = $request->email;
+        $employee->address = $request->address;
+        $employee->telepon = $request->telepon;
+        $employee->save();
+        Session::flash('message', 'Success add data employee!');
+        return redirect('admin/employee'); // Set redirect ketika berhasil
     }
 
     /**
